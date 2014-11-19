@@ -1,0 +1,47 @@
+# URxvt.depth: 32
+URxvt.scrollBar: false
+URxvt.font: xft:M+ 1mn regular for Powerline:pixelsize=11,\
+            [codeset=JISX0208]xft:Kochi Gothic:pixelsize=9:antialias=false,\
+            [codeset=KSC5601]xft:Baekmuk Dotum:pixelsize=9:antialias=false
+URxvt.boldFont: xft:M+ 1mn Bold:pixelsize=11,\
+                [codeset=JISX0208]xft:Kochi Gothic:pixelsize=11,\
+                [codeset=KSC5601]xft:Baekmuk Dotum:pixelsize=11:antialias=false
+
+URxvt*termName: rxvt-256color
+URxvt*perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt*url-select.launcher: firefox
+URxvt*url-select.underline: true
+URxvt*matcher.button: 1
+URxvt*colorUL: #CC4141
+URxvt*shading: true
+
+urxvt*foreground: #333333
+
+urxvt*background: #F5F5E9
+
+
+
+!black
+URxvt*color0:     #373737
+URxvt*color8:     #474747
+!red (red)
+URxvt*color1:     #CC4141
+URxvt*color9:     #BA2929
+!green (green)
+URxvt*color2:     #43803D
+URxvt*color10:    #2F632A
+!yellow (blue)
+URxvt*color3:     #7882BF
+URxvt*color11:    #596196
+!blue (brown)
+URxvt*color4:     #DBAB3B
+URxvt*color12:    #C79520
+!magenta (magenta)
+URxvt*color5:     #BF849C
+URxvt*color13:    #B06A86
+!cyan (light blue)
+URxvt*color6:     #6AA9B0
+URxvt*color14:    #4D8B91
+!white (pink)
+URxvt*color7:     #E39036
+URxvt*color15:    #C97820
