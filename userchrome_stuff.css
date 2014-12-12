@@ -1,0 +1,11 @@
+/* No site favicon */
+
+.tab-icon-image{display:none !important;}
+
+/* No x button to close tab */
+
+.tab-close-button{display:none !important;}
+
+/* No arroww on location bar */
+
+.autocomplete-history-dropmarker{display: none !important;}
