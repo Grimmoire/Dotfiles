@@ -1,0 +1,134 @@
+// vim:ts=4:sw=4:et
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.549479166666667,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 260,
+               "width": 634,
+               "x": 15,
+               "y": 425
+            },
+            "name": "rtorrent",
+            "percent": 0.422750424448217,
+            "swallows": [
+               {
+               "title": "^rtorrent$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 260,
+               "width": 634,
+               "x": 15,
+               "y": 425
+            },
+            "name": "ranger",
+            "percent": 0.577249575551783,
+            "swallows": [
+               {
+               "title": "^ranger$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.450520833333333,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 260,
+               "width": 634,
+               "x": 15,
+               "y": 425
+            },
+            "name": "wMAL-curses 0.3",
+            "percent": 0.224957555178268,
+            "swallows": [
+               {
+               // "class": "^URxvt$",
+               // "instance": "^urxvt$",
+               "title": "^wMAL\\-curses\\ 0\\.3$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            // splitv split container with 2 children
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splitv",
+            "percent": 0.775042444821732,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 1,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 260,
+                       "width": 634,
+                       "x": 15,
+                       "y": 425
+                    },
+                    "name": "ncmpcpp ver. 0.5.10",
+                    "percent": 0.849015317286652,
+                    "swallows": [
+                       {
+                       // "class": "^URxvt$",
+                       // "instance": "^urxvt$",
+                       "title": "^ncmpcpp\\ ver\\.\\ 0\\.5\\.10$"
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 1,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 260,
+                       "width": 634,
+                       "x": 15,
+                       "y": 425
+                    },
+                    "name": "htop",
+                    "percent": 0.150984682713348,
+                    "swallows": [
+                       {
+                       // "class": "^URxvt$",
+                       // "instance": "^urxvt$",
+                       "title": "^htop$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        }
+    ]
+}
+

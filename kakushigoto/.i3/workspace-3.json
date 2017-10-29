@@ -1,0 +1,16 @@
+{
+    "layout": "splitv",
+    "percent": 1.0,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "email",
+            "percent": 1.0,
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^Thunderbird$"
+                }
+            ]
+        }
+}

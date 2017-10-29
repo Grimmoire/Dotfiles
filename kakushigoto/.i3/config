@@ -1,0 +1,170 @@
+# GENERAL SETTINGS
+set $mod Mod4
+new_window pixel 1 
+new_float pixel 3 
+font xft: ProFont for Powerline 8.2
+floating_modifier $mod
+workspace_auto_back_and_forth yes
+bindsym $mod+q kill
+
+# DMENU
+bindsym $mod+p exec --no-startup-id dmenu_run -i -h 14 -y 0 -w 250 -q -l 5 -p "> " -fn "ProFont for Powerline-10:light" -nb "#222222" -nf "#c2c2b0" -sb "#222222" -sf "#c2c2b0" 
+
+# CHANGING BORDER STYLE
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+
+# BROWSER POP-UP
+for_window [window_role="pop-up"] floating enable,move absolute center
+
+focus_follows_mouse no 
+
+# ASSIGN WORKSPACE VARIABLES
+set $WS1 1
+set $WS2 2
+set $WS3 3
+set $WS4 4
+set $WS5 5
+set $WS6 6
+set $WS7 7
+set $WS8 8
+set $WS9 9
+set $WS0 0
+
+# WINDOW CONTROL 
+# for_window [class="[.]*"] floating enable 
+for_window [class="mpv"] floating enable
+for_window [title="Download"] floating enable
+for_window [title="Preferences"] floating enable
+for_window [Class="Steam"] floating enable
+for_window [title="urxvt"] floating enable
+
+# ASSIGN WINDOWS TO WORKSPACES
+assign [instance="firefox"] $WS2
+assign [instance="steam"] $WS4
+assign [instance="thunderbird"] $WS3
+bindsym $MOD+Tab focus right
+
+# MOVE THE FOCUS
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# MOVE FOCUSED WINDOW
+bindsym $mod+Shift+H move left
+bindsym $mod+Shift+J move down
+bindsym $mod+Shift+K move up
+bindsym $mod+Shift+L move right
+
+# SPLITS
+bindsym $mod+bar split h
+bindsym $mod+underscore split v
+
+# FULLSCREEN
+bindsym $mod+f fullscreen
+
+# CHANGE CONTAINER LAYOUT (STACKED, TABBED, DEFAULT)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
+
+# TOGGLE TILING / FLOATING
+bindsym $mod+Shift+space floating toggle
+
+# CHANGE FOCUS BETWEEN TILING / FOLATING WINDOWS 
+bindsym $mod+space focus mode_toggle
+
+# FOCUS THE PARENT CONTAINER
+bindsym $mod+a focus parent
+
+# FOCUS THE CHILD CONTAINER
+bindsym $mod+d focus child
+
+# SWITCH TO WORKSPACE
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS0
+
+# MOVE FORCUSED CONTAINER TO WORKSPACE
+bindsym $mod+Shift+exclam move container to workspace $WS1
+bindsym $mod+Shift+at move container to workspace $WS2
+bindsym $mod+Shift+numbersign move container to workspace $WS3
+bindsym $mod+Shift+dollar move container to workspace $WS4
+bindsym $mod+Shift+percent move container to workspace $WS5
+bindsym $mod+Shift+asciicircum move container to workspace $WS6
+bindsym $mod+Shift+ampersand move container to workspace $WS7
+bindsym $mod+Shift+asterisk move container to workspace 8
+bindsym $mod+Shift+parenleft move container to workspace 9
+bindsym $mod+Shift+parenright move container to workspace 10
+
+# RESTART I3
+bindsym $mod+Shift+R restart
+
+# SCREENSHOT
+bindsym $mod+SHIFT+a exec scrot -s
+
+# COLORS
+# CLASS                  BORDER  BG       TEXT
+client.focused           #fb9fa4 #fb9fa4  #c2c2b0
+client.unfocused         #fb9fd2 #fb9fd2  #c2c2b0
+client.focused_inactive  #fb9fd2 #fb9fd2  #c2c2b0
+client.urgent            #5afbf2 #5afbf2  #c2c2b0
+
+# GAPS
+gaps inner 15 
+gaps outer 10 
+
+# SMART GAPS
+smart_gaps on
+smart_borders on
+
+# ADDED KEY BINDINGS
+bindsym $MOD+SHIFT+f exec thunar
+bindsym $MOD+Return exec --no-startup-id urxvt -g 60x15+15+425
+bindsym $MOD+SHIFT+x exec i3lock -i /home/jason/Pictures/Wallpapers/wallpaper.png
+bindsym $MOD+SHIFT+d exec --no-startup-id firefox
+bindsym $MOD+SHIFT+s exec pavucontrol
+
+# VOLUME ADJUSTMENT
+bindsym $MOD+SHIFT+Up exec pulseaudio-ctl up
+bindsym $MOD+SHIFT+Down exec pulseaudio-ctl down 
+
+# MPD CONFIG
+bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up 
+bindsym XF86AudioLowerVolume exec pulseaudio-ctl down 
+bindsym XF86AudioMute exec pulseaudio-ctl mute 
+bindsym $MOD+SHIFT+P exec mpc toggle
+bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+
+# SCREENSHOTS
+bindsym Print exec --no-startup-id scrot
+bindsym --release $mod+Up exec --no-startup-id scrot -s
+
+#GET SHIT IN THE PROPER PLACES
+exec --no-startup-id i3-msg 'workspace $WS1; exec urxvt'
+exec --no-startup-id i3-msg 'workspace $WS2; exec firefox; wait 100'
+exec --no-startup-id i3-msg 'workspace $WS3; exec thunderbird'
+
+# AUTOSTART
+exec "feh --bg-scale ~/.kakuWallpaper.png"
+exec "compton --config ~/.config/.compton.conf -b"
+exec "pulseaudio"
+exec "mpd"
+exec --no-startup-id "mpdscribble"
+exec "lxpolkit"
+exec --no-startup-id "i3-msg 'workspace $WS1; append_layout /home/jason/.i3/workspace-1.json'"
+# exec "redshift -l 36.114647:-115.172813"
+exec "flexget daemon start -d"
+exec "thunar --daemon"
+#exec "gksudo openvpn /etc/openvpn/AirVPN_US-LosAngeles_Merope_UDP-443.ovpn"

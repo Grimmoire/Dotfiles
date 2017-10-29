@@ -1,0 +1,239 @@
+set $mod Mod4
+
+# new window default border
+new_window pixel 1 
+new_float pixel 3 
+
+# Font
+font xft: M+ 1c 8.2
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Back and Forth
+workspace_auto_back_and_forth yes
+
+# kill focused window
+bindsym $mod+q kill
+
+# start dmenu
+# bindsym $mod+p exec "dmenu_run -nb black -p run"
+bindsym $mod+p exec --no-startup-id dmenu_run -i -h 14 -y 0 -w 250 -q -l 5 -p "> " -fn "M+ 1c-10:light" -nb "#FFDDCA" -nf "#222222" -sb "#FFDDCA" -sf "#DB5A6B" 
+# CHANGING BORDER STYLE
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+
+# browser pop-ups
+for_window [window_role="pop-up"] floating enable,move absolute center
+
+#mouse focus
+focus_follows_mouse no
+
+# ASSIGN WORKSPACE VARIABLES
+set $WS1 一
+set $WS2 二
+set $WS3 三
+set $WS4 四
+set $WS5 五
+set $WS6 六
+set $WS7 七
+set $WS8 八
+set $WS9 九
+set $WS0 十
+
+# WINDOW CONTROL 
+## Float everything
+#for_window [class="[.]*"] floating enable 
+assign [instance="vivaldi"] $WS2
+assign [instance="steam"] $WS3
+assign [instance="thunderbird"] $WS4
+for_window [class="mpv"] floating enable
+for_window [title="Download"] floating enable
+for_window [title="Preferences"] floating enable
+for_window [Class="Steam"] floating enable
+for_window [class="Skype"] floating enable
+
+bindsym $MOD+Tab focus right
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+H move left
+bindsym $mod+Shift+J move down
+bindsym $mod+Shift+K move up
+bindsym $mod+Shift+L move right
+
+# split in horizontal orientation
+bindsym $mod+bar split h
+
+# split in vertical orientation
+bindsym $mod+underscore split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS0
+
+# move focused container to workspace
+bindsym $mod+Shift+exclam move container to workspace $WS1
+bindsym $mod+Shift+at move container to workspace $WS2
+bindsym $mod+Shift+numbersign move container to workspace $WS3
+bindsym $mod+Shift+dollar move container to workspace $WS4
+bindsym $mod+Shift+percent move container to workspace $WS5
+bindsym $mod+Shift+asciicircum move container to workspace $WS6
+bindsym $mod+Shift+ampersand move container to workspace $WS7
+bindsym $mod+Shift+asterisk move container to workspace 8
+bindsym $mod+Shift+parenleft move container to workspace 9
+bindsym $mod+Shift+parenright move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+C reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+R restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+E exit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt 
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#EXAMPLE USING THE i3 bar
+# Create Log out, Reboot, Poweroff bindings
+mode "Exit >> (L)ogout, (X)eboot, (P)oweroff  (C)Reload (R)Restart" {
+        bindsym $mod+x exec systemctl reboot
+        bindsym $mod+l exit
+        bindsym $mod+p exec systemctl poweroff
+        bindsym $mod+c reload
+        bindsym $mod+r restart
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+Control+q mode "Exit >> (L)ogout, (X)eboot, (P)oweroff  (C)Reload (R)Restart"
+
+# take screenshot
+bindsym Print exec scrot 'Screenshot - %Y-%m-%d--%_$wx$h_scrot.png' && 'mv $f ~/Pictures/scrot'
+
+# colors
+# class						border   backgr  text	  indicator
+client.focused				#DB5A6B #DB5A6B  #27221F
+client.unfocused			#F08F90 #F08F90  #27221F
+client.focused_inactive	#F08F90 #F08F90  #2c2c2f
+client.urgent				#383a3b #383a3b  #DB5A6B
+
+# GAPS
+gaps inner 15 
+gaps outer 10 
+
+#Smart Gaps
+
+smart_gaps on
+smart_borders on
+
+###  ADDED KEY BINDINGS  ###
+bindsym $MOD+SHIFT+f exec pcmanfm
+bindsym $MOD+Return exec --no-startup-id urxvt -g 90x16+15+425
+bindsym $MOD+SHIFT+x exec i3lock -i /home/jason/Pictures/wallpapers/bg.jpg
+bindsym $MOD+SHIFT+b exec --no-startup-id firefox
+bindsym $MOD+SHIFT+u exec --no-startup-id uzbl-tabbed
+bindsym $MOD+m exec compiz-boxmenu
+
+# VOLUME ADJUSTMENT
+bindsym $MOD+SHIFT+Up exec pulseaudio-ctl up
+bindsym $MOD+SHIFT+Down exec pulseaudio-ctl down 
+
+# MPD config
+bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up 
+bindsym XF86AudioLowerVolume exec pulseaudio-ctl down 
+bindsym XF86AudioMute exec pulseaudio-ctl mute 
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	 status_command i3blocks 
+	tray_output none
+	position top
+	mode dock
+	font xft:M+ 1c 8.2 
+
+  colors {
+	statusline	#333333
+	#background  #F08F90
+	background	#FFDDCA
+	
+# class                 	border 		backgrd 	text
+        focused_workspace  #27221F 		#FFDDCA 	#DB5A6B
+        active_workspace   #27221F 		#FFDDCA 	#27221F
+        inactive_workspace #27221F 		#FFDDCA  #27221F 
+        urgent_workspace   #27221F 		#FFDDCA 	#DB5A6B
+   }
+ 
+}
+
+#GET SHIT IN THE PROPER PLACES
+exec --no-startup-id i3-msg 'workspace $WS1; exec urxvt'
+exec --no-startup-id i3-msg 'workspace $WS2; exec vivaldi; wait 100'
+exec --no-startup-id i3-msg 'workspace $WS3; exec thunderbird; workspace $WS2'
+
+# AUTOSTART
+exec feh --bg-scale ~/Pictures/Wallpapers/wallpaper.png
+#exec compton --config ~/.config/.compton.conf -b
+exec "pulseaudio"
+#exec "firefox"
+#exec "thunderbird"
+exec "mpd"
+exec --no-startup-id "mpdscribble"
+exec "lxpolkit"
+exec --no-startup-id "i3-msg 'workspace $WS1; append_layout /home/jason/.i3/workspace-1.json'"
+exec "flexget daemon start -d"
+exec "gksudo openvpn /etc/openvpn/AirVPN_US-LosAngeles_Merope_UDP-443.ovpn"

@@ -1,0 +1,17 @@
+background no
+out_to_x no
+out_to_console yes
+update_interval 1
+
+# Network interface must have an ip address to be considered up
+if_up_strictness address
+
+
+,[{"name": "uptime", \
+	 "color":"\#333333", "full_text":"uptime ${uptime_short} "},\
+  {"name": "memory", \
+	 "color": "\#333333", "full_text": "ram ${memperc}% "}, \
+  {"name": "time", \
+	 "icon_color": "\#333333", "color": "\#333333", \
+	 "full_text": "${time %d日%m月%y年}  | ${time %l:%M}"}\
+]

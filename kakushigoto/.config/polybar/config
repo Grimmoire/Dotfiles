@@ -1,0 +1,330 @@
+[colors]
+
+;background = ${xrdb:color0:#222}
+background = #222
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+trans = #DA292b2e
+white = #eee
+grey = #444444
+pink = #d75f87
+blue = #4f97d7
+purple = #875faf
+green = #20ad80
+red = #ee3333
+
+
+[bar/main]
+;monitor = ${env:MONITOR}
+width = 100%
+height = 20
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 5
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = M+ 1mn:pixelsize=10;1
+font-3 = "WenQuanYi:pixelsize=10;0"
+
+modules-left = bspwm i3 
+modules-center = date 
+modules-right = mpd pavolume memory cpu powermenu
+
+tray-position = right
+tray-padding = 2
+
+[bar/secondary]
+monitor = ${env:MONITOR}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+; font-3 = "FontAwesome:pixelsize=10;0"
+
+modules-left = bspwm i3
+modules-center = 
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = "y"
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-layout = %layout%
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+[module/i3index]
+type = internal/i3
+format = <label-state>
+
+label-focused = "%name% "
+label-focused-foreground = ${colors.background}
+;label-focused-background = ${colors.pink}
+
+label-unfocused =
+label-urgent =
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+
+index-sort = true
+enable-click = false
+enable-scroll = false
+
+ws-icon-0 = 0;零
+ws-icon-1 = 1;一
+ws-icon-2 = 2;二
+ws-icon-3 = 3;三
+ws-icon-4 = 4;四
+ws-icon-5 = 5;五
+ws-icon-6 = 6;六
+ws-icon-7 = 7;七
+ws-icon-8 = 8;八
+ws-icon-9 = 9;九
+
+ws-icon-default = ○
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode = " %mode% "
+label-mode-foreground = ${colors.red}
+label-mode-background = ${colors.background}
+
+; focused = Active workspace on focused monitor
+label-focused = "%icon%"
+label-focused-foreground = ${colors.pink}
+label-focused-background = ${colors.background}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = " %icon% "
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.background}
+
+; urgent = Workspace with urgency hint set
+label-urgent = " ● "
+label-urgent-foreground = ${colors.red}
+label-urgent-background = ${colors.background}
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <toggle> <bar-progress> 
+
+icon-random = 乱
+icon-repeat = 重复
+icon-repeatone = 重复一个
+icon-prev = 上
+icon-stop = 停
+icon-play = 玩
+icon-pause = 呆
+icon-next = 下
+icon-seekb =9
+icon-seekf =0
+
+bar-progress-width = 12 
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "中央理器"
+format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "随机存取存器"
+format-prefix-foreground = ${colors.foreground-alt}
+label-active-font = 4
+label = %percentage_used%%
+
+[module/pavolume]
+type = custom/script
+interval = 2
+label = %output%
+exec = ~/.config/polybar/pavolume.sh
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/pavolume.sh --up
+scroll-down = ~/.config/polybar/pavolume.sh --down
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = 有
+label-open-foreground = ${colors.secondary}
+label-close = 没有了
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = 重启
+menu-0-0-exec = menu-open-1
+menu-0-1 = 没电了
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[module/date]
+type          =  internal/date
+interval 			= 	5
+
+format 				= 	<label>
+format-prefix-foreground 	= 	${colors.foreground}
+format-underline 		= fb9fa4
+
+label 				= %date%, %time%
+
+date 				= 	"%a %B %d"
+date-alt 			= 	"年%Y月%m日%d"
+
+time 				= 	"%I:%M %p"
+time-alt 			= 	"点%H分%M"
+
+[module/vpn]
+type 				= 	internal/network
+interface 			= 	tun0
+
+interval 			= 	5.0
+accumulate-stats 		= 	true
+format-connected 		= 	VPN: <label-connected>
+format-connected-foreground 	= 	${colors.colour_1}
+format-disconnected 		= 	<label-disconnected>
+
+label-connected 		=	Connected
+label-connected-foreground 	= 	${colors.foreground}
+
+label-disconnected 		= 	(None)
+label-disconnected-foreground 	= 	${colors.foreground}
